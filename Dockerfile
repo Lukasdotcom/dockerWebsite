@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:impish
 ENV DEBIAN_FRONTEND noninteractive
 # Used to install all the required software
 RUN apt update
