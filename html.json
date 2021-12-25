@@ -1,1 +1,1 @@
-{ "api": "", "database": { "username": "root", "name": "website", "password": "root" }, "developer": false, "throttle":10, "throttleTime":30, "fanStart" : 37, "fanStop": 33}
+{ "api": "", "database": { "username": "default", "name": "website", "password": "password" }, "developer": false, "throttle":10, "throttleTime":30, "fanStart" : 37, "fanStop": 33}
