@@ -23,11 +23,11 @@ COPY start.sh /scripts/start.sh
 RUN ["chmod", "+x", "/scripts/start.sh"]
 # Gives apache the right settings
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY apache2.conf /etc/apache2/apache2.conf
 # Gives the website default configurations
 COPY python.json /var/www/website/python/config.json
 COPY html.json /var/www/website/html/config.json
 CMD ["/scripts/start.sh"]
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 EXPOSE 443
 EXPOSE 80
