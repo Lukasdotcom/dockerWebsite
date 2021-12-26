@@ -1,5 +1,6 @@
 FROM ubuntu
 ENV DEBIAN_FRONTEND noninteractive
+ENV TZ="America/Detroit"
 # Used to install all the required software
 RUN apt update
 RUN apt upgrade -y
