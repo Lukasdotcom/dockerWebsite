@@ -10,6 +10,7 @@ RUN apt install -y php-gd php-json php-mysql php-curl php-mbstring php-intl php-
 RUN apt install -y python3
 RUN apt install -y pip
 RUN apt install -y git
+RUN apt install -y unattended-upgrades
 RUN python3 -m pip install mysql-connector-python
 RUN python3 -m pip install RPi.GPIO
 RUN apt install -y python3-certbot-apache
