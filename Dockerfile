@@ -24,6 +24,7 @@ RUN ["chmod", "+x", "/scripts/start.sh"]
 # Gives apache the right settings
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache2.conf /etc/apache2/apache2.conf
+RUN a2enmod rewrite
 # Gives the website default configurations
 COPY python.json /var/www/website/python/config.json
 COPY html.json /var/www/website/html/config.json
