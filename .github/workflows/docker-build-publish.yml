@@ -3,6 +3,8 @@ name: Docker Build/Publish Image
 on:
   schedule:
   - cron: "0 2 * * *"
+  push:
+    branches: [ main ]
 
 jobs:   
   build:    
@@ -12,7 +14,7 @@ jobs:
       DOCKER_IMAGE: lukasdotcom/website      
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
-      DOCKER_TARGET_PLATFORM: linux/arm64                     
+      DOCKER_TARGET_PLATFORM: linux/arm64,linux/arm/v7                   
     steps:    
     - name: Checkout the code       
       uses: actions/checkout@v1             
