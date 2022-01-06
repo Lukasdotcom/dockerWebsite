@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:impish
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/Detroit
 # Used to install all the required software
@@ -9,11 +9,10 @@ RUN apt install -y mariadb-server
 RUN apt install -y php
 RUN apt install -y php-json php-mysql php-curl php-zip
 RUN apt install -y python3
-RUN apt install -y pip
 RUN apt install -y git
-RUN apt install -y unattended-upgrades
-RUN python3 -m pip install mysql-connector-python
-RUN python3 -m pip install RPi.GPIO
+RUN apt install -y python3-mysql.connector
+RUN apt install -y python3-rpi.gpio
+RUN apt install -y python3-requests
 # Clones the website
 WORKDIR "/var/www"
 RUN rm -r html
