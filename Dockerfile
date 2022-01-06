@@ -7,14 +7,13 @@ RUN apt upgrade -y
 RUN apt install -y apache2
 RUN apt install -y mariadb-server
 RUN apt install -y php
-RUN apt install -y php-gd php-json php-mysql php-curl php-mbstring php-intl php-imagick php-xml php-zip
+RUN apt install -y php-json php-mysql php-curl php-zip
 RUN apt install -y python3
 RUN apt install -y pip
 RUN apt install -y git
 RUN apt install -y unattended-upgrades
 RUN python3 -m pip install mysql-connector-python
 RUN python3 -m pip install RPi.GPIO
-RUN apt install -y nano
 # Clones the website
 WORKDIR "/var/www"
 RUN rm -r html
