@@ -1,1 +1,0 @@
-{ "api": "", "database": { "username": "admin", "name": "website", "password": "password", "backupLocation": "/backup" }, "developer": false, "throttle":10, "throttleTime":30, "fanStart" : 37, "fanStop": 33}

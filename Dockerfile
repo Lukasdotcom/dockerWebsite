@@ -14,7 +14,6 @@ RUN apt install -y git
 RUN apt install -y unattended-upgrades
 RUN python3 -m pip install mysql-connector-python
 RUN python3 -m pip install RPi.GPIO
-RUN apt install -y python3-certbot-apache
 RUN apt install -y nano
 # Clones the website
 WORKDIR "/var/www"
@@ -29,8 +28,19 @@ COPY apache2.conf /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 # Gives the website default configurations
 COPY python.json /var/www/website/python/config.json
-COPY html.json /var/www/website/html/config.json
 CMD ["/scripts/start.sh"]
+# Sets all the default enviromental vars
+ENV WEBSITE_API none
+ENV WEBSITE_USER admin
+ENV WEBSITE_DATABASE_TABLE website
+ENV WEBSITE_PASSWORD password
+ENV WEBSITE_BACKUP_LOCATION /backup
+ENV WEBSITE_BACKUP_LENGTH 604800
+ENV WEBSITE_DEVELOPER true
+ENV WEBSITE_THROTTLE 5
+ENV WEBSITE_THROTTLE_TIME 30
+ENV WEBSITE_FAN_START 43
+ENV WEBSITE_FAN_STOP 35
 
 EXPOSE 443
 EXPOSE 80
