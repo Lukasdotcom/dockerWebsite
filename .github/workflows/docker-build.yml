@@ -8,7 +8,7 @@ jobs:
   build:    
     runs-on: ubuntu-18.04    
     env:      
-      DOCKER_REGISTRY: hub.docker.com      
+      DOCKER_REGISTRY: docker.io      
       DOCKER_IMAGE: lukasdotcom/website      
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
