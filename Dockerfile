@@ -24,10 +24,8 @@ RUN ["chmod", "+x", "/scripts/start.sh"]
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache2.conf /etc/apache2/apache2.conf
 RUN a2enmod rewrite
-# Gives the website default configurations
-COPY python.json /var/www/website/python/config.json
 CMD ["/scripts/start.sh"]
-# Sets all the default enviromental vars
+# Sets all the default enviromental variables
 ENV WEBSITE_API none
 ENV WEBSITE_USER admin
 ENV WEBSITE_DATABASE_TABLE website
