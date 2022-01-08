@@ -1,4 +1,5 @@
 FROM ubuntu:impish
+ARG TARGETPLATFORM
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/Detroit
 # Used to install all the required software
@@ -11,7 +12,7 @@ RUN apt install -y php-json php-mysql php-curl php-zip
 RUN apt install -y python3
 RUN apt install -y git
 RUN apt install -y python3-mysql.connector
-RUN apt install -y python3-rpi.gpio
+RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then apt install -y python3-rpi.gpio; fi
 RUN apt install -y python3-requests
 # Clones the website
 WORKDIR "/var/www"
