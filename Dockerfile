@@ -18,6 +18,10 @@ RUN apt install -y python3-requests
 WORKDIR "/var/www"
 RUN rm -r html
 RUN git clone https://github.com/lukasdotcom/website
+# Makes sure to auto restore the latest backup in the volume
+COPY restore.json /var/www/website/html/restore.json
+COPY update.sh /var/www/website/python/update.sh
+RUN ["chmod", "+x", "/var/www/website/python/update.sh"]
 # Gets the startup script ready
 COPY start.sh /scripts/start.sh
 RUN ["chmod", "+x", "/scripts/start.sh"]
