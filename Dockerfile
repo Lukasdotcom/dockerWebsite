@@ -14,6 +14,7 @@ RUN apt install -y git
 RUN apt install -y python3-mysql.connector
 RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then apt install -y python3-rpi.gpio; fi
 RUN apt install -y python3-requests
+RUN apt install -y python3-docker
 # Clones the website
 WORKDIR "/var/www"
 RUN rm -r html
