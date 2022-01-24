@@ -5,16 +5,16 @@ ENV TZ America/Detroit
 # Used to install all the required software
 RUN apt update
 RUN apt upgrade -y
-RUN apt install -y apache2
-RUN apt install -y mariadb-server
-RUN apt install -y php
-RUN apt install -y php-json php-mysql php-curl php-zip
-RUN apt install -y python3
-RUN apt install -y git
-RUN apt install -y python3-mysql.connector
+RUN apt install -y apache2 --no-install-recommends
+RUN apt install -y mariadb-server --no-install-recommends
+RUN apt install -y php --no-install-recommends
+RUN apt install -y php-json php-mysql php-curl php-zip --no-install-recommends
+RUN apt install -y python3 --no-install-recommends
+RUN apt install -y git --no-install-recommends
+RUN apt install -y python3-mysql.connector --no-install-recommends
 RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then apt install -y python3-rpi.gpio; fi
-RUN apt install -y python3-requests
-RUN apt install -y python3-docker
+RUN apt install -y python3-requests --no-install-recommends
+RUN apt install -y python3-docker --no-install-recommends
 # Clones the website
 WORKDIR "/var/www"
 RUN rm -r html
