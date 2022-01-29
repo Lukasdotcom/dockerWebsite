@@ -15,6 +15,7 @@ RUN apt install -y python3-mysql.connector --no-install-recommends
 RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then apt install -y python3-rpi.gpio; fi
 RUN apt install -y python3-requests --no-install-recommends
 RUN apt install -y python3-docker --no-install-recommends
+RUN apt install -y composer --no-install-recommends
 # Clones the website
 WORKDIR "/var/www"
 RUN rm -r html
@@ -31,8 +32,12 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache2.conf /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 CMD ["/scripts/start.sh"]
+# Runs composer
+WORKDIR "/var/www/website/html"
+RUN composer install
 # Sets all the default enviromental variables
 ENV WEBSITE_API none
+ENV MAIL_PASSWORD none
 ENV WEBSITE_USER admin
 ENV WEBSITE_DATABASE_TABLE website
 ENV WEBSITE_PASSWORD password
