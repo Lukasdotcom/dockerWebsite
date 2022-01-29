@@ -37,7 +37,10 @@ WORKDIR "/var/www/website/html"
 RUN composer install
 # Sets all the default enviromental variables
 ENV WEBSITE_API none
+ENV MAIL_SMTP_SERVER none
+ENV MAIL_USERNAME none
 ENV MAIL_PASSWORD none
+ENV MAIL_SMTP_PORT 587
 ENV WEBSITE_USER admin
 ENV WEBSITE_DATABASE_TABLE website
 ENV WEBSITE_PASSWORD password

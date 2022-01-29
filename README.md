@@ -24,6 +24,6 @@ docker run --privileged -d -p 80:80 --name website --env-file .env --volume=/var
 
 When you are done I would recommend for you to login and update the server in the web portal.
 ## Email
-You can send emails through sendgrid by creating an account and getting the apikey for an SMTP server and using that as the enviromental variable MAIL_PASSWORD.
+You can send emails through any smtp server and then just put the credentials in the enviromental file.
 ## Advanced
 If you want ssl you can expose port 443 also and use apache certbot to enable ssl on the website.
