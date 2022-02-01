@@ -16,6 +16,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/arm
 RUN apt install -y python3-requests --no-install-recommends
 RUN apt install -y python3-docker --no-install-recommends
 RUN apt install -y composer --no-install-recommends
+RUN apt install -y curl --no-install-recommends
 # Clones the website
 WORKDIR "/var/www"
 RUN rm -r html
@@ -32,9 +33,11 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache2.conf /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 CMD ["/scripts/start.sh"]
-# Runs composer
+# Runs composer to install all dependencies
 WORKDIR "/var/www/website/html"
 RUN composer install
+# Adds a healthcheck
+HEALTHCHECK --timeout=5s CMD curl --fail http://localhost || exit 1
 # Sets all the default enviromental variables
 ENV WEBSITE_API none
 ENV MAIL_SMTP_SERVER none
@@ -52,5 +55,4 @@ ENV WEBSITE_THROTTLE_TIME 30
 ENV WEBSITE_FAN_START 43
 ENV WEBSITE_FAN_STOP 35
 
-EXPOSE 443
 EXPOSE 80
