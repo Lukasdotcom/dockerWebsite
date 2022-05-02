@@ -1,4 +1,4 @@
-FROM ubuntu:impish
+FROM ubuntu:jammy
 ARG TARGETPLATFORM
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/Detroit
