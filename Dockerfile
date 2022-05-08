@@ -6,7 +6,7 @@ ENV TZ America/Detroit
 RUN apt update
 RUN apt upgrade -y
 RUN apt install -y apache2 --no-install-recommends
-RUN apt install -y mariadb-server --no-install-recommends
+RUN apt install -y mariadb-server
 RUN apt install -y php --no-install-recommends
 RUN apt install -y php-json php-mysql php-curl php-zip --no-install-recommends
 RUN apt install -y python3 --no-install-recommends
