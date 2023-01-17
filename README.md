@@ -19,7 +19,7 @@ docker volume create backup
 Then run the following command to start the container and then it should be accessable at port 80.
 
 ``
-docker run --privileged -d -p 80:80 --name website --env-file .env --volume=/var/run/docker.sock:/var/run/docker.sock --volume=backup:/backup lukasdotcom/website
+docker run -d -p 80:80 --name website --env-file .env --volume=backup:/backup lukasdotcom/website
 ``
 
 When you are done I would recommend for you to login and update the server in the web portal.
