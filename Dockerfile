@@ -17,6 +17,7 @@ RUN apt install -y python3-requests --no-install-recommends
 RUN apt install -y python3-docker --no-install-recommends
 RUN apt install -y composer --no-install-recommends
 RUN apt install -y curl --no-install-recommends
+RUN apt install -y nodejs --no-install-recommends
 # Clones the website
 WORKDIR "/var/www"
 RUN rm -r html
